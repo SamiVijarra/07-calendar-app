@@ -54,11 +54,17 @@ export const useAuthStore = () => {
       
       dispatch(onLogin({ name: data.name, uid: data.uid }));
       
+    // eslint-disable-next-line no-unused-vars
     } catch (error) {
       localStorage.clear();
       dispatch(onLogout());
     }
   };
+
+  const startLogout = () => {
+    localStorage.clear();
+    dispatch(onLogout());
+  }
 
   return {
     status,
@@ -67,6 +73,7 @@ export const useAuthStore = () => {
 
     startLogin,
     startRegister,
-    checkAuthToken
+    checkAuthToken,
+    startLogout
   }
 }
